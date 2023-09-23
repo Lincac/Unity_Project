@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Flow
+  m_Shader: {fileID: 4800000, guid: 16a3c50155ea78b468346ef070c6be91, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _FlowColor:
+        m_Texture: {fileID: 2800000, guid: d064a28952488bc4dbabf2679c702d7c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 1f7e690c328bdb247aa8914b1c691c1f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _FlowIntensity: 1.33
+    - _OuterColorIntensity: 7.14
+    m_Colors:
+    - _FlowOffset: {r: 2.9, g: 1.84, b: 0, a: 0}
+    - _FlowSpeed: {r: 0, g: 1.66, b: 0, a: 0}
+    - _InnerColor: {r: 0.6415094, g: 0.09925235, b: 0.39870626, a: 0}
+    - _OuterColor: {r: 0.12978172, g: 0.095371954, b: 0.8867924, a: 1}
+  m_BuildTextureStacks: []

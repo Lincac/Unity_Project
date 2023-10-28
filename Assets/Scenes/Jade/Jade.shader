@@ -1,4 +1,4 @@
-Shader "Unlit/Jade"
+Shader "Jade"
 {
     Properties
     {

@@ -5,7 +5,6 @@
 #include "Lighting.cginc"
 
 #define kPI 3.1415926
-#define SUN_DIR normalize(_WorldSpaceLightPos0.xyz)
 
 sampler2D _MainTex;
 uniform sampler3D _cloudShape;
@@ -126,10 +125,10 @@ float getDensity(float3 pos)
     float base_cloud = remap(low_frequency.r, -(1.0 - fbm), 1., 0.0 , 1.0);
 
     float density = getDensityForCloud(height, _cloudType);
-	base_cloud = (density / height) * 0.6;
+	base_cloud = (density / height);
 
-    float3 weather_data = tex2D(_cloudCoverage, uv).rgb;
-	float cloud_coverage = weather_data.r * 0.6;
+    float3 weather_data = tex2Dlod(_cloudCoverage, float4(uv,0,0)).rgb;
+	float cloud_coverage = weather_data.r * 0.4;
 	float base_cloud_with_coverage = remap(base_cloud , cloud_coverage , 1.0 , 0.0 , 1.0);
 	base_cloud_with_coverage *= cloud_coverage;
 

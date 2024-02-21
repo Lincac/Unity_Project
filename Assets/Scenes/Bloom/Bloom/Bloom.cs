@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,7 +30,9 @@ public class Bloom : PostProcess
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
-        if(material != null)
+        Console.WriteLine("asdasd");
+
+        if (material != null)
         {
             material.SetFloat("_LuminanceThreshold", LuminanceThreshold);
 
@@ -88,6 +91,9 @@ public class Bloom : PostProcess
             Graphics.Blit(source, destination,material,5);
             RenderTexture.ReleaseTemporary(buffer0 );
         }
-        else Graphics.Blit(source, destination);
+        else
+        {
+            Graphics.Blit(source, destination);
+        }
     }
 }

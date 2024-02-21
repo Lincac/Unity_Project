@@ -32,12 +32,17 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Noise:
-        m_Texture: {fileID: 2800000, guid: 4c164acd821a46247b561b14aa7dc127, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: b1d4f5d2dcfc648458ca376cc7cf06c8, type: 3}
+        m_Scale: {x: 1, y: 1.27}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CullOffset: 0.59
-    - _FireSpeed: 0.43
-    m_Colors: []
+    - _ColorLimit: 1.04
+    - _CullOffset: 0.78
+    - _FireSpeed: 0.46
+    - _SoftEdges: 0.4
+    m_Colors:
+    - _FireColor: {r: 0.8396226, g: 0, b: 0, a: 1}
+    - _FireColorButtom: {r: 0.7254902, g: 0.55557984, b: 0.33333337, a: 1}
+    - _FireColorTop: {r: 0.7529412, g: 0.43700328, b: 0.41568628, a: 1}
   m_BuildTextureStacks: []

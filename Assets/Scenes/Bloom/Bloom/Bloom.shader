@@ -131,9 +131,9 @@ Shader "PostProcess/Bloom"
             ENDCG
         }
 
-        UsePass "PostProcess/Blur/GAUSSIAN_BLUR_VERTICAL"
+        UsePass "PostProcess/Gaussian/GAUSSIAN_BLUR_VERTICAL"
 
-        UsePass "PostProcess/Blur/GAUSSIAN_BLUR_HORIZONTAL"
+        UsePass "PostProcess/Gaussian/GAUSSIAN_BLUR_HORIZONTAL"
 
         Pass{
             NAME "Combine"

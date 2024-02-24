@@ -51,5 +51,10 @@ namespace AmplifyShaderEditor
 		{
 			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "ed95fe726fd7b4644bb42f4d1ddd2bcd" );
 		}
+		[MenuItem( "Assets/Create/Amplify Shader/Templates/MY_MULTIPASSSHADER", false, 85 )]
+		public static void ApplyTemplateTemplatesMY_MULTIPASSSHADER()
+		{
+			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "e796739cc95c64b4bab628a0f6305ef4" );
+		}
 	}
 }

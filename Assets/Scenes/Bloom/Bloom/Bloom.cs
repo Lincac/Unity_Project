@@ -16,22 +16,20 @@ public class Bloom : PostProcess
         }
     }
 
-    [Range(0, 8)]
-    public int blurTimes = 4;
+    [Range(0, 10)]
+    public int bloomIntensity = 0;
 
-    [Range(0.2f, 3.0f)]
-    public float blurSize = 0.6f;
-
-    [Range(4, 8)]
-    public int downSampleTimes = 4;
+    [Range(0.0f, 4.0f)]
+    public float bloomRange = 0.0f;
 
     [Range(0.0f, 3.0f)]
     public float LuminanceThreshold = 0.6f;
 
+    [Range(1.0f, 10.0f)]
+    public float LuminanceIntensity = 1.0f;
+
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
-        Console.WriteLine("asdasd");
-
         if (material != null)
         {
             material.SetFloat("_LuminanceThreshold", LuminanceThreshold);
@@ -44,7 +42,7 @@ public class Bloom : PostProcess
             Graphics.Blit(source, buffer0, material,0);
 
             // DownSample
-            for(int i = 0; i < downSampleTimes; i++)
+            for(int i = 0; i < 4; i++)
             {
                 width /= 2;
                 height /= 2;
@@ -57,25 +55,25 @@ public class Bloom : PostProcess
             }
 
             // Blur
-            for(int i = 0; i < blurTimes; i++)
+            for (int i = 0; i < bloomIntensity; i++)
             {
-                material.SetFloat("_BlurSize",1.0f + i * blurSize);
+                material.SetFloat("_BlurSize", i / 4 + bloomRange);
 
-                RenderTexture buffer1 = RenderTexture.GetTemporary(width, height, 0);
+                RenderTexture buffer1 = RenderTexture.GetTemporary(width, height, 3);
                 Graphics.Blit(buffer0, buffer1, material, 3);
 
                 RenderTexture.ReleaseTemporary(buffer0);
                 buffer0 = buffer1;
-
-                buffer1 = RenderTexture.GetTemporary(width, height, 0);
-                Graphics.Blit(buffer0, buffer1, material, 4);
-
-                RenderTexture.ReleaseTemporary(buffer0);
-                buffer0 = buffer1;
             }
+            material.SetFloat("_BlurSize", bloomIntensity / 4 + bloomRange);
+            RenderTexture buffer3 = RenderTexture.GetTemporary(width, height, 0);
+            Graphics.Blit(buffer0, buffer3, material, 3);
+
+            RenderTexture.ReleaseTemporary(buffer0);
+            buffer0 = buffer3;
 
             // UpSample
-            for (int i = 0; i < downSampleTimes; i++)
+            for (int i = 0; i < 4; i++)
             {
                 width *= 2;
                 height *= 2;
@@ -87,8 +85,10 @@ public class Bloom : PostProcess
                 buffer0 = buffer1;
             }
 
+            // combine
             material.SetTexture("_BloomColor", buffer0);
-            Graphics.Blit(source, destination,material,5);
+            material.SetFloat("_LuminanceIntensity", LuminanceIntensity);
+            Graphics.Blit(source, destination,material,4);
             RenderTexture.ReleaseTemporary(buffer0 );
         }
         else

@@ -5,6 +5,7 @@ Shader "PostProcess/Bloom"
         _MainTex ("Texture", 2D) = "white" {}
         _BloomColor ("Bloom Color",2D) = "white" {}
         _LuminanceThreshold ("Luminance Threshold",Float) = 0.6
+        _LuminanceIntensity ("Luminance Intensity",Float) = 1.0
     }
     SubShader
     {
@@ -27,6 +28,7 @@ Shader "PostProcess/Bloom"
         float4 _MainTex_TexelSize;
         sampler2D _BloomColor;
         float _LuminanceThreshold;
+        float _LuminanceIntensity;
 
         v2f vert (appdata v)
         {
@@ -131,9 +133,7 @@ Shader "PostProcess/Bloom"
             ENDCG
         }
 
-        UsePass "PostProcess/Gaussian/GAUSSIAN_BLUR_VERTICAL"
-
-        UsePass "PostProcess/Gaussian/GAUSSIAN_BLUR_HORIZONTAL"
+        UsePass "PostProcess/Kawase/KAWASEBLUR"
 
         Pass{
             NAME "Combine"
@@ -143,7 +143,7 @@ Shader "PostProcess/Bloom"
             #pragma fragment frag
 
             fixed4 frag(v2f i) : SV_Target{
-                return tex2D(_MainTex,i.uv) + tex2D(_BloomColor,i.uv);
+                return tex2D(_MainTex,i.uv) + tex2D(_BloomColor,i.uv) * _LuminanceIntensity;
             }
             ENDCG
         }

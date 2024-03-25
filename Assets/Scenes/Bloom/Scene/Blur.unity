@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.48547828, g: 0.5172317, b: 0.57242703, a: 1}
+  m_IndirectSpecularColor: {r: 0.4852118, g: 0.5165084, b: 0.57204527, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -319,10 +319,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1918290223}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b5f1f64f234df448816933dfde4f66, type: 3}
+  m_Script: {fileID: 11500000, guid: cb96ad7cc7839ab43883d02b0a19f9a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bokenShader: {fileID: 4800000, guid: 9897664ee8c19754093d82ced081bbf3, type: 3}
-  iterations: 128
-  size: 1.21
-  downsample: 2
+  kawaseShader: {fileID: 4800000, guid: 105a9cb15a6081b4a8126d776f0368e3, type: 3}
+  blurIterations: 4
+  blurSize: 0.89
+  DownsampleScaling: 1

@@ -12,6 +12,8 @@ Shader "PostProcess/Kawase"
 
         Pass
         {
+        	NAME "KAWASEBLUR"
+
     	    Cull Off ZWrite Off ZTest Always
             CGPROGRAM
             #pragma vertex vert
